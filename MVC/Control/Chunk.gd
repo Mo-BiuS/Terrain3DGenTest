@@ -84,30 +84,9 @@ func genChunk():
 	mesh.mesh = surface_tool.commit()
 	
 	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(.2, 1, .2, 1) # Rouge
+	material.albedo_color = Color(.2, 1, .2)
 	mesh.material_override = material
 	
 	add_child(mesh)
 	
-	# Création d'un StaticBody3D pour la collision
-	var static_body = StaticBody3D.new()
-
-	# Créer un ConcavePolygonShape3D pour la collision
-	var collision_shape = CollisionShape3D.new()
-	var concave_shape = ConcavePolygonShape3D.new()
-
-	# Récupérer les points du mesh généré
-	var surface_arrays = mesh.mesh.surface_get_arrays(0)  # Surface 0
-	var vertices = surface_arrays[Mesh.ARRAY_VERTEX]
-
-	# Appliquer les points du mesh au ConcavePolygonShape3D
-	concave_shape.set_faces(vertices)
-
-	# Attacher le shape à la CollisionShape3D
-	collision_shape.shape = concave_shape
-
-	# Ajouter la CollisionShape3D au StaticBody3D
-	static_body.add_child(collision_shape)
-
-	# Ajouter le StaticBody3D à la scène
-	add_child(static_body)
+	mesh.create_convex_collision()
