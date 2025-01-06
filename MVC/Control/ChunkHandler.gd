@@ -17,11 +17,20 @@ func genPosRect(pos:Vector2i,rect:int):
 			chunkDict[Vector2i(x,y)].setNeighbors(getNeighbors(Vector2i(x,y)))
 			chunkDict[Vector2i(x,y)].genChunk()
 
-func getNeighbors(pos:Vector2i)->Array:
-	var rep:Array
-	var dir:Array = [pos-Vector2i(0,-1),pos-Vector2i(2,0),pos-Vector2i(0,1),pos-Vector2i(-1,0)]
+func getNeighbors(pos: Vector2i) -> Array:
+	var rep: Array[Chunk] = []
+	
+	var dir: Array = [
+		pos + Vector2i(-1, 1), # NW
+		pos + Vector2i(0, 1),  # N
+		pos + Vector2i(1, 1),  # NE
+		pos + Vector2i(1, 0),   # E
+		pos + Vector2i(1, -1),   # SE
+		pos + Vector2i(0, -1),   # S
+		pos + Vector2i(-1, -1),  # SW
+		pos + Vector2i(-1, 0)   # W
+	]
 	for i in dir:
-		if(chunkDict.has(i)):rep.append(chunkDict.get(i))
+		if chunkDict.has(i):rep.append(chunkDict.get(i))
 		else:rep.append(null)
 	return rep
-	

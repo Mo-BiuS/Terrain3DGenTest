@@ -1,13 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://k08308tc1ost"]
+[gd_scene load_steps=2 format=3 uid="uid://k08308tc1ost"]
 
 [ext_resource type="Script" path="res://MVC/Control/Chunk.gd" id="1_i0k8u"]
-[ext_resource type="Texture2D" uid="uid://bsecyju4fjux3" path="res://Ressources/icon.svg" id="2_tndpp"]
 
 [node name="Chunk" type="Node3D"]
 script = ExtResource("1_i0k8u")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
-visible = false
-axis = 1
-texture = ExtResource("2_tndpp")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
