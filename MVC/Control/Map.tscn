@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://ct7mit6urt1lq"]
+
+[ext_resource type="Script" path="res://MVC/Control/Map.gd" id="1_o2ykg"]
+[ext_resource type="Script" path="res://MVC/Control/ChunkHandler.gd" id="2_lnmcx"]
+
+[sub_resource type="Environment" id="Environment_uw7jq"]
+
+[node name="Map" type="Node3D"]
+script = ExtResource("1_o2ykg")
+
+[node name="ChunkHandler" type="Node3D" parent="."]
+transform = Transform3D(1, -0.000506145, 0, 0.000506145, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("2_lnmcx")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 5.13858e-08, -7.07265e-08, 0, 0.809017, 0.587785, 8.74228e-08, 0.587785, -0.809017, 0, 10, -10)
+current = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_uw7jq")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60, 60, 0)
+light_size = 1.0
+shadow_enabled = true
+omni_range = 360.0
+omni_attenuation = 0.7
