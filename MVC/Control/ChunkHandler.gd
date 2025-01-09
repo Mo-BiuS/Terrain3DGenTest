@@ -8,7 +8,7 @@ func genPosRect(pos:Vector2i,rect:int):
 	for x in range(pos.x-rect/2, pos.x+rect/2+1):
 		for y in range(pos.y-rect/2, pos.y+rect/2+1):
 			var chunk:Chunk = packedChunk.instantiate()
-			chunk.position = Vector3i(x,0,y)*2
+			chunk.position = Vector3i(x,0,y)*4
 			chunk.name = str(Vector2i(x,y))
 			chunkDict[Vector2i(x,y)] = chunk
 			add_child(chunk)

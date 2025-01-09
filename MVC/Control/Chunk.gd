@@ -57,19 +57,19 @@ func genChunk():
 	
 	surface_tool.set_uv(Vector2(0,0))
 	surface_tool.set_normal(Vector3(0, 0, 1))
-	surface_tool.add_vertex(Vector3(-1, height[0], 1));
+	surface_tool.add_vertex(Vector3(-2, height[0], 2));
 	
 	surface_tool.set_uv(Vector2(0,0))
 	surface_tool.set_normal(Vector3(0, 0, 1))
-	surface_tool.add_vertex(Vector3(1, height[1], 1));
+	surface_tool.add_vertex(Vector3(2, height[1], 2));
 	
 	surface_tool.set_uv(Vector2(0,0))
 	surface_tool.set_normal(Vector3(0, 0, 1))
-	surface_tool.add_vertex(Vector3(1, height[2], -1));
+	surface_tool.add_vertex(Vector3(2, height[2], -2));
 	
 	surface_tool.set_uv(Vector2(0,0))
 	surface_tool.set_normal(Vector3(0, 0, 1))
-	surface_tool.add_vertex(Vector3(-1, height[3], -1));
+	surface_tool.add_vertex(Vector3(-2, height[3], -2));
 	
 	surface_tool.add_index(0);
 	surface_tool.add_index(2);
@@ -84,7 +84,7 @@ func genChunk():
 	mesh.mesh = surface_tool.commit()
 	
 	var material = StandardMaterial3D.new()
-	material.albedo_color = Color(.2, 1, .2)
+	material.albedo_color = Color(.2, randf_range(.8,1), .2)
 	mesh.material_override = material
 	
 	add_child(mesh)

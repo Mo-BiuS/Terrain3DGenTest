@@ -1,8 +1,9 @@
 extends CharacterBody3D
 
+@onready var animatedSprite:AnimatedSprite3D = $AnimatedSprite3D
 
-const SPEED = 5.0
-const JUMP_VELOCITY = 4.5
+const SPEED = 10.0
+const JUMP_VELOCITY = 10
 
 
 func _physics_process(delta: float) -> void:
@@ -24,5 +25,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
+	
+	if(velocity.z > 0):animatedSprite.play("WalkDown")
+	elif(velocity.z < 0):animatedSprite.play("WalkUp")
+	elif(velocity.x < 0):animatedSprite.play("WalkLeft")
+	elif(velocity.x > 0):animatedSprite.play("WalkRight")
+	else:animatedSprite.stop()
 
 	move_and_slide()
